@@ -1,3 +1,10 @@
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (charmender.overlapsWith(pokeball_2)) {
+        game.over(true, effects.starField)
+    } else {
+        info.changeLifeBy(-1)
+    }
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (charmender.overlapsWith(pokeball)) {
         game.over(true, effects.starField)
@@ -5,6 +12,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         info.changeLifeBy(-1)
     }
 })
+let pokeball_2: Sprite = null
 let pokeball: Sprite = null
 let charmender: Sprite = null
 game.splash("charmender pokeball yakalıyor")
@@ -172,5 +180,25 @@ pokeball = sprites.create(img`
     `, SpriteKind.Player)
 pokeball.setVelocity(90, 90)
 pokeball.setBounceOnWall(true)
+pokeball_2 = sprites.create(img`
+    . . . . . . f f f f . . . . . . 
+    . . . . f f 2 2 2 2 f f . . . . 
+    . . . f 2 2 2 2 2 2 2 2 f . . . 
+    . . f 2 2 1 2 2 2 2 2 2 2 f . . 
+    . f 2 2 1 2 2 2 2 2 2 2 2 2 f . 
+    . f 2 2 2 2 2 2 2 2 2 2 2 2 f . 
+    f 2 2 2 2 2 2 f f 2 2 2 2 2 f . 
+    f 2 2 2 2 2 f 1 1 f 2 2 2 2 2 f 
+    f f f f f f f 1 1 f f f f f f f 
+    f 1 1 1 1 1 f 1 1 f 1 1 1 1 1 f 
+    . f 1 1 1 1 1 f f 1 1 1 1 1 f . 
+    . f 1 1 1 1 1 1 1 1 1 1 1 1 f . 
+    . . f 1 1 1 1 1 1 1 1 1 f f . . 
+    . . . f 1 1 1 1 1 1 1 1 f . . . 
+    . . . . f f 1 1 1 1 f f . . . . 
+    . . . . . . f f f f . . . . . . 
+    `, SpriteKind.Player)
+pokeball_2.setVelocity(90, 90)
+pokeball_2.setBounceOnWall(true)
 info.startCountdown(10)
 info.setLife(3)
